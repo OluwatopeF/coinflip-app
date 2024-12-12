@@ -1,38 +1,59 @@
-.App {
-  text-align: center;
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  background:linear-gradient(
+    to left,
+    white 50%,
+    rgba(201, 204, 20, 0.959) 50%
+  ) fixed;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.coin{
+  background-color: aliceblue;
+  width: 500px;
+  padding: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  box-shadow: 10px 10px 20px rgba(0,0,0,1);
+  border-radius: 10px;
+  -webkit-perspective: 300px;
+  perspective: 600px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.status{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  justify-content: space-evenly;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.img-coin{
+  background-color: orange;
+  width: 250px;
+  height: 300px;
+  margin: auto;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttons-div{
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75em;
+}
+
+.buttons-div button{
+  width: 8em;
+  height: 5em;
+  border-radius: 25px;
+  background-color: rgba(201, 204, 20, 0.959);
+  font-weight: 500;
+  border: none;
+
 }

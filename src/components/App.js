@@ -4,7 +4,10 @@ import { useState } from 'react';
 function App() {
 
   var [selectedSide, setSelectedSide] = useState(1);
+  var[headCount, setHeadCount] = useState(0)
+  var[tailCount, setTailCount] = useState(0)
   const [flipResult, setFlipResult] = useState(0);
+  
 
   const flipCoin = () => {
     const coinResult = Math.round(Math.random());
@@ -14,7 +17,26 @@ function App() {
 
   const resetCoin = () => {
     setFlipResult(flipResult * 0);
+    setHeadCount(headCount * 0);
+    setTailCount(tailCount * 0);
+  
   }
+  
+  const statusCoin = () => {
+    if(selectedSide === 1){
+      setHeadCount(headCount + 1);
+    }
+    else{
+      setTailCount(tailCount + 1);
+    }
+  }
+
+// Required to run two function on one onclick
+  const coinFunctions = () => {
+    flipCoin();
+    statusCoin();
+  }
+
 
   // return  results in form of single div box
   return (
@@ -22,8 +44,8 @@ function App() {
       <h1>Flip A Coin</h1>
         
         <div className="status">
-          <h3>Heads: </h3>
-          <h3>Tails: </h3>
+          <h3>Heads:{headCount}</h3>
+          <h3>Tails:{tailCount}</h3>
         </div>
         
         <div>
@@ -36,7 +58,7 @@ function App() {
         </div>
       
       <div className="buttons-div">
-        <button onClick={flipCoin}>Flip coin</button>
+        <button onClick={coinFunctions}>Flip coin</button>
         <button onClick={resetCoin}>Reset</button>
       </div>
       

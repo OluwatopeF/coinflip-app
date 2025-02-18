@@ -7,34 +7,52 @@ function App() {
   var[headCount, setHeadCount] = useState(0)
   var[tailCount, setTailCount] = useState(0)
   const [flipResult, setFlipResult] = useState(0);
+  const [coinFlip, setCoinFlip] = useState("img-coin");
+  
+  // const [resultHeads, setResultHeads] = useState(false);
+  // const [resultTails, setResultTails] = useState(false);
+
   
 
   const flipCoin = () => {
     const coinResult = Math.round(Math.random());
     setSelectedSide(coinResult);
     setFlipResult(flipResult + 1);
-  }
 
-  const resetCoin = () => {
-    setFlipResult(flipResult * 0);
-    setHeadCount(headCount * 0);
-    setTailCount(tailCount * 0);
-  
+    // play animation here (limit 1 sec, 3 - 4 times)
+    if(coinFlip === 'img-coin'){
+      setCoinFlip('img-coinPlay');
+      setTimeout(() => (setCoinFlip('img-coin')), 1000);
+    }
+    else{
+      setCoinFlip('img-coin');  
+    }
   }
   
   const statusCoin = () => {
     if(selectedSide === 1){
-      setHeadCount(headCount + 1);
+      setHeadCount(headCount => headCount + 1);
+      //play heads animation
     }
     else{
-      setTailCount(tailCount + 1);
+      setTailCount(tailCount => tailCount + 1);
+      //play tails animation
     }
+  }
+
+  const resetCoin = () => {
+    setFlipResult(flipResult => flipResult * 0);
+    setHeadCount(headCount => headCount * 0);
+    setTailCount(tailCount => tailCount * 0);
+  
   }
 
 // Required to run two function on one onclick
   const coinFunctions = () => {
     flipCoin();
-    statusCoin();
+    setTimeout(() => {
+      statusCoin();
+    }, 1000);
   }
 
 
@@ -53,8 +71,10 @@ function App() {
           <h4>You got {selectedSide === 1 ? "heads":"tails"}</h4>
         </div>
 
-        <div className="img-coin">
-        {/* contains two coin images. shows result of one when clicked */}
+        <div className={coinFlip}>
+            
+          <div className='img-coin1'>H</div>
+          <div className='img-coin2'>T</div>
         </div>
       
       <div className="buttons-div">

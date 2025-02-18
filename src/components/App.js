@@ -59,7 +59,7 @@ function App() {
   // return  results in form of single div box
   return (
     <div className="coin">
-      <h1>Flip A Coin</h1>
+      <h1>Flip A Coin *In progress*</h1>
         
         <div className="status">
           <h3>Heads:{headCount}</h3>
